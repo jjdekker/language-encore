@@ -1,0 +1,11 @@
+'scopeName': 'source.enc'
+'fileTypes': [
+  'enc'
+]
+'name': 'Encore'
+'patterns' : [
+  {
+    'match': '\\b(bool|char|real|int|uint|string|void)\\b'
+    'name': 'storage.type.enc'
+  }
+]
