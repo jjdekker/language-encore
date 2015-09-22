@@ -5,6 +5,15 @@
 'name': 'Encore'
 'patterns' : [
   {
+    'comment': 'Line comments'
+    'begin': '--'
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.comment.enc'
+    'end': '$'
+    'name': 'comment.line.double-dash.enc'
+  }
+  {
     'comment': 'Storage types'
     'match': '\\b(class|bool|char|real|int|uint|string|void)\\b'
     'name': 'storage.type.enc'
