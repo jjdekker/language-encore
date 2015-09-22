@@ -44,9 +44,12 @@
     'match': '\\b(true|false|null)\\b'
     'name': 'constant.language.enc'
   }
+  {
+    'include': '#keywords'
+  }
 ]
 
-'repository' : [
+'repository' :
   'string_escaped_char':
     'patterns': [
       {
@@ -65,4 +68,55 @@
         'name': 'constant.other.placeholder.enc'
       }
     ]
-]
+  'keywords':
+    'patterns': [
+      {
+        'comment': 'Flow control keywords'
+        'match': '\\b(if|then|else|unless|while)\\b'
+        'name': 'keyword.control.enc'
+      }
+      {
+        'match': '\\bbundle\\b'
+        'name': 'keyword.bundle.enc'
+      }
+      {
+        'match': '\\bwhere\\b'
+        'name': 'keyword.where.enc'
+      }
+      {
+        'match': '\\bpassive\\b'
+        'name': 'keyword.passive.enc'
+      }
+      {
+        'match': '\\bdef\\b'
+        'name': 'keyword.define.enc'
+      }
+      {
+        'match': '\\bimport\\b'
+        'name': 'keyword.import.enc'
+      }
+      {
+        'match': '\\bqualified\\b'
+        'name': 'keyword.qualified.enc'
+      }
+      {
+        'match': '\\bas\\b'
+        'name': 'keyword.as.enc'
+      }
+      {
+        'match': '\\bembed\\b'
+        'name': 'keyword.embed.enc'
+      }
+      {
+        'match': '\\bend\\b'
+        'name': 'keyword.end.enc'
+      }
+      {
+        'match': '\\blet\\b'
+        'name': 'keyword.let.enc'
+      }
+      {
+        'match': '\\bin\\b'
+        'name': 'keyword.in.enc'
+      }
+    ]
