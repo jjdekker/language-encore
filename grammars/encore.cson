@@ -39,7 +39,11 @@
     'match': '\\b((0x[0-9a-fA-F]+)|(0[0-7]+i?)|(\\d+([Ee]\\d+)?i?)|(\\d+[Ee][\-\+]\\d+i?))\\b'
     'name': 'constant.numeric.integer.enc'
   }
-  
+  {
+    'comment': 'Language constants'
+    'match': '\\b(true|false|null)\\b'
+    'name': 'constant.language.enc'
+  }
 ]
 
 'repository' : [
