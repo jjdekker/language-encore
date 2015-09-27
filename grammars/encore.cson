@@ -79,6 +79,12 @@
   }
 
   {
+    'comment': 'Terminators'
+    'match': ';'
+    'name': 'punctuation.terminator.enc'
+  }
+
+  {
     'include': '#keywords'
   }
 ]
