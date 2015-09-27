@@ -62,6 +62,23 @@
   }
 
   {
+    'comment': 'Function declarations'
+    'match': '^(\\bdef\\b)(?:\\s+([a-zA-Z_]\\w*)(?=\\())?'
+    'captures':
+      '1':
+        'name': 'keyword.define.enc'
+      '2':
+        'name': 'entity.name.function'
+  }
+  {
+    'comment': 'Function call'
+    'match': '([a-zA-Z_]\\w*)(?=\\()'
+    'captures':
+      '1':
+        'name': 'support.function.enc'
+  }
+
+  {
     'include': '#keywords'
   }
 ]
