@@ -15,9 +15,25 @@
   }
 
   {
-    'comment': 'Storage types'
-    'match': '\\b(class|bool|char|real|int|uint|string|void)\\b'
-    'name': 'storage.type.enc'
+    'comment': 'Built-in functions'
+    'match': '\\b(print|get|await|async)\\b(?=\\()'
+    'name': 'support.function.builtin.enc'
+  }
+  {
+    'comment': 'Function declarations'
+    'match': '(\\bdef\\b)(?:\\s+([a-zA-Z_]\\w*)(?=\\())?'
+    'captures':
+      '1':
+        'name': 'keyword.define.enc'
+      '2':
+        'name': 'entity.name.function'
+  }
+  {
+    'comment': 'Function call'
+    'match': '([a-zA-Z_]\\w*)(?=\\()'
+    'captures':
+      '1':
+        'name': 'support.function.enc'
   }
   {
     'comment': 'Interpreted string literals'
@@ -55,27 +71,13 @@
     'match': '\\b(true|false|null)\\b'
     'name': 'constant.language.enc'
   }
-  {
-    'comment': 'Built-in functions'
-    'match': '\\b(print|get|await|async)\\b(?=\\()'
-    'name': 'support.function.builtin.enc'
-  }
 
   {
-    'comment': 'Function declarations'
-    'match': '^(\\bdef\\b)(?:\\s+([a-zA-Z_]\\w*)(?=\\())?'
+    'comment': 'Bundle declarations'
+    'match': '(?<=bundle)\\s+([a-zA-Z_]\\w*)\\s+(?=where)'
     'captures':
       '1':
-        'name': 'keyword.define.enc'
-      '2':
-        'name': 'entity.name.function'
-  }
-  {
-    'comment': 'Function call'
-    'match': '([a-zA-Z_]\\w*)(?=\\()'
-    'captures':
-      '1':
-        'name': 'support.function.enc'
+        'name': 'entity.name.package.enc'
   }
 
   {
@@ -86,6 +88,11 @@
 
   {
     'include': '#keywords'
+  }
+  {
+    'comment': 'Storage types'
+    'match': '\\b(class|bool|char|real|int|uint|string|void)\\b'
+    'name': 'storage.type.enc'
   }
 ]
 
@@ -112,7 +119,7 @@
     'patterns': [
       {
         'comment': 'Flow control keywords'
-        'match': '\\b(if|then|else|unless|while|async)\\b'
+        'match': '\\b(if|then|else|unless|while)\\b'
         'name': 'keyword.control.enc'
       }
       {
@@ -158,5 +165,15 @@
       {
         'match': '\\bin\\b'
         'name': 'keyword.in.enc'
+      }
+
+      {
+        'match': '\\basync\\b'
+        'name': 'keyword.async.enc'
+      }
+
+      {
+        'match': '\\bsuspend\\b'
+        'name': 'keyword.suspend.enc'
       }
     ]
