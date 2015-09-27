@@ -92,9 +92,7 @@
     'include': '#keywords'
   }
   {
-    'comment': 'Storage types'
-    'match': '\\b(class|bool|char|real|int|uint|string|void)\\b'
-    'name': 'storage.type.enc'
+    'include': '#storage_types'
   }
 ]
 
@@ -177,5 +175,13 @@
       {
         'match': '\\bsuspend\\b'
         'name': 'keyword.suspend.enc'
+      }
+    ]
+  'storage_types':
+    'patterns': [
+      {
+        'comment': 'Storage types'
+        'match': '\\b(class|bool|char|real|int|uint|string|void)\\b'
+        'name': 'storage.type.enc'
       }
     ]
