@@ -21,6 +21,19 @@
     'match': '\\b(print|get|await|async)\\b(?=\\()'
     'name': 'support.function.builtin.enc'
   }
+
+  {
+    'comment': 'Class definition'
+    'match': '(\\bpassive\\b\\s+)?(\\bclass\\b)(?:\\s+([a-zA-Z_]\\w*))(?=:)'
+    'captures':
+      '1':
+        'name': 'storage.modifier.enc'
+      '2':
+        'name': 'storage.type.enc'
+      '3':
+        'name': 'entity.name.class'
+  }
+
   {
     'comment': 'Function declarations'
     'match': '(\\bdef\\b)(?:\\s+([a-zA-Z_]\\w*)(?=\\())?'
@@ -85,7 +98,7 @@
     'match': '(?<=bundle)\\s+([a-zA-Z_]\\w*)\\s+(?=where)'
     'captures':
       '1':
-        'name': 'entity.name.package.enc'
+        'name': 'entity.name.bundle'
   }
 
   {
@@ -135,10 +148,6 @@
       {
         'match': '\\bwhere\\b'
         'name': 'keyword.where.enc'
-      }
-      {
-        'match': '\\bpassive\\b'
-        'name': 'keyword.passive.enc'
       }
       {
         'match': '\\bdef\\b'
