@@ -37,6 +37,12 @@
       '1':
         'name': 'support.function.enc'
   }
+
+  {
+    'match': '\\bthis\\b'
+    'name': 'variable.language.this.enc'
+  }
+
   {
     'comment': 'Interpreted string literals'
     'begin': '"'
