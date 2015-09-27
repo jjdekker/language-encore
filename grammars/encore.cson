@@ -3,6 +3,8 @@
   'enc'
 ]
 'name': 'Encore'
+'foldingStartMarker': '{\\s*$'
+'foldingStopMarker': '}\\s*$'
 'patterns' : [
   {
     'comment': 'Line comments'
