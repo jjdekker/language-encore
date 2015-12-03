@@ -1,0 +1,6 @@
+
+'.source.go':
+  'editor':
+    'commentStart': '-- '
+    'increaseIndentPattern': '^.*((\\b(def|if|else|repeat|let|class)\\b.*|\\w)|\\{[^}]*|\\([^)]*)$'
+    'decreaseIndentPattern': '^\\s*(\\}[\\),]?|\\)[,]?)$'
