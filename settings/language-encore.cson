@@ -1,5 +1,4 @@
-
-'.source.go':
+'.source.enc':
   'editor':
     'commentStart': '-- '
     'increaseIndentPattern': '^.*((\\b(def|if|else|repeat|let|class)\\b.*|\\w)|\\{[^}]*|\\([^)]*)$'
