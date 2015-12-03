@@ -137,59 +137,16 @@
   'keywords':
     'patterns': [
       {
-        'comment': 'Flow control keywords'
-        'match': '\\b(if|then|else|unless|while)\\b'
+        'comment': 'Control keywords'
+        'match': '\\b(and|async|await|by|class|chain|def|else|eos|for|foreach|get|getNext|if|in|join|let|liftf|liftv|match|new|not|or|passive|print|repeat|require|stream|suspend|then|this|trait|unless|val|when|while|with|yield|bundle)\\b'
         'name': 'keyword.control.enc'
       }
+    ]
+  'danger-words':
+    'patterns': [
       {
-        'match': '\\bbundle\\b'
-        'name': 'keyword.bundle.enc'
-      }
-      {
-        'match': '\\bwhere\\b'
-        'name': 'keyword.where.enc'
-      }
-      {
-        'match': '\\bdef\\b'
-        'name': 'keyword.define.enc'
-      }
-      {
-        'match': '\\bimport\\b'
-        'name': 'keyword.import.enc'
-      }
-      {
-        'match': '\\bqualified\\b'
-        'name': 'keyword.qualified.enc'
-      }
-      {
-        'match': '\\bas\\b'
-        'name': 'keyword.as.enc'
-      }
-      {
-        'match': '\\bembed\\b'
-        'name': 'keyword.embed.enc'
-      }
-      {
-        'match': '\\bend\\b'
-        'name': 'keyword.end.enc'
-      }
-      {
-        'match': '\\blet\\b'
-        'name': 'keyword.let.enc'
-      }
-      {
-        'match': '\\bin\\b'
-        'name': 'keyword.in.enc'
-      }
-
-      {
-        'match': '\\basync\\b'
-        'name': 'keyword.async.enc'
-      }
-
-      {
-        'match': '\\bsuspend\\b'
-        'name': 'keyword.suspend.enc'
+        'match' : '\\b(embed|body|en)\\b'
+        'name' : 'keyword.danger.enc'
       }
     ]
   'storage_types':
