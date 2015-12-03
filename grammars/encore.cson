@@ -113,6 +113,12 @@
   {
     'include': '#storage_types'
   }
+  {
+    'include': '#danger-words'
+  }
+  {
+    'include': '#operators'
+  }
 ]
 
 'repository' :
@@ -138,7 +144,7 @@
     'patterns': [
       {
         'comment': 'Control keywords'
-        'match': '\\b(and|async|await|by|class|chain|def|else|eos|for|foreach|get|getNext|if|in|join|let|liftf|liftv|match|new|not|or|passive|print|repeat|require|stream|suspend|then|this|trait|unless|val|when|while|with|yield|bundle)\\b'
+        'match': '\\b(and|async|await|by|class|chain|def|else|eos|for|foreach|get|getNext|if|in|join|let|liftf|liftv|match|new|not|or|passive|print|repeat|require|stream|suspend|then|this|trait|unless|val|when|while|with|yield|bundle|where)\\b'
         'name': 'keyword.control.enc'
       }
     ]
@@ -155,5 +161,33 @@
         'comment': 'Storage types'
         'match': '\\b(class|bool|char|real|int|uint|string|void)\\b'
         'name': 'storage.type.enc'
+      }
+    ]
+  'operators':
+    'comment': 'Note that the order here is very important!'
+    'patterns': [
+      {
+        'match': '\\-\\-'
+        'name': 'keyword.operator.decrement.enc'
+      }
+      {
+        'match': '\\+\\+'
+        'name': 'keyword.operator.increment.enc'
+      }
+      {
+        'match': '(==|!=|<=|>=|<[^<]|>[^>])'
+        'name': 'keyword.operator.comparison.enc'
+      }
+      {
+        'match': '(&&|\\|\\||!)'
+        'name': 'keyword.operator.logical.enc'
+      }
+      {
+        'match': '(\\+|\\-|\\*|/|%)'
+        'name': 'keyword.operator.arithmetic.enc'
+      }
+      {
+        'match': '(&(?!\\^)|\\||\\^|&\\^|<<|>>)'
+        'name': 'keyword.operator.arithmetic.bitwise.go'
       }
     ]
