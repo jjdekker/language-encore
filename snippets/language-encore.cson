@@ -31,7 +31,7 @@
     'body': '#! /usr/bin/env encorec -run$0'
   'trait':
     'prefix': 'trait'
-    'body': 'trait $1 {\n\t$2\n}$0'
+    'body': 'trait ${1:Bar}\n\t$0'
   'while':
     'prefix': 'wh'
     'body': 'while ${1:i > 0}\n\t$0'
