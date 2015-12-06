@@ -3,6 +3,7 @@
   'enc'
 ]
 'name': 'Encore'
+'firstLineMatch': '^#!/.*\\b\\w*encore\\b'
 'foldingStartMarker': '/\\*\\*|\\{\\s*$'
 'foldingStopMarker': '\\*\\*/|^\\s*\\}'
 'patterns' : [
