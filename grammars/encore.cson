@@ -8,187 +8,345 @@
 'foldingStopMarker': '\\*\\*/|^\\s*\\}'
 'patterns' : [
   {
-    'comment': 'Line comments'
-    'begin': '--'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.comment.enc'
-    'end': '$'
-    'name': 'comment.line.double-dash.enc'
-  }
-
-  {
-    'comment': 'Built-in functions'
-    'match': '\\b(print|get|await|async)\\b(?=\\()'
-    'name': 'support.function.builtin.enc'
-  }
-
-  {
-    'comment': 'Class definition'
-    'match': '(\\bpassive\\b\\s+)?(\\bclass\\b)(?:\\s+([a-zA-Z_]\\w*))(?=:)'
-    'captures':
-      '1':
-        'name': 'storage.modifier.enc'
-      '2':
-        'name': 'storage.type.enc'
-      '3':
-        'name': 'entity.name.class'
-  }
-
-  {
-    'comment': 'Function declarations'
-    'match': '(\\bdef\\b)(?:\\s+([a-zA-Z_]\\w*)(?=\\())?'
-    'captures':
-      '1':
-        'name': 'keyword.define.enc'
-      '2':
-        'name': 'entity.name.function'
-  }
-  {
-    'comment': 'Function call'
-    'match': '([a-zA-Z_]\\w*)(?=\\()'
-    'captures':
-      '1':
-        'name': 'support.function.enc'
-  }
-
-  {
-    'match': '\\bthis\\b'
-    'name': 'variable.language.this.enc'
-  }
-
-  {
-    'comment': 'Interpreted string literals'
-    'begin': '"'
-    'beginCaptures':
-      '0':
-        'name': 'punctuation.definition.string.begin.enc'
-    'end': '"'
-    'endCaptures':
-      '0':
-        'name': 'punctuation.definition.string.end.enc'
-    'name': 'string.quoted.double.enc'
-    'patterns': [
-      {
-        'include': '#string_escaped_char'
-      }
-      {
-        'include': '#string_placeholder'
-      }
-    ]
-  }
-  {
-    'comment': 'Floating-point literals'
-    'match': '(\\.\\d+([Ee][\-\+]\\d+)?i?)\\b|\\b\\d+\\.\\d*(([Ee][\-\+]\\d+)?i?\\b)?'
-    'name': 'constant.numeric.floating-point.enc'
-  }
-  {
-    'comment': 'Integers'
-    'match': '\\b((0x[0-9a-fA-F]+)|(0[0-7]+i?)|(\\d+([Ee]\\d+)?i?)|(\\d+[Ee][\-\+]\\d+i?))\\b'
-    'name': 'constant.numeric.integer.enc'
-  }
-
-  {
-    'comment': 'Language constants'
-    'match': '\\b(true|false|null)\\b'
-    'name': 'constant.language.enc'
-  }
-
-  {
-    'comment': 'Bundle declarations'
-    'match': '(?<=bundle)\\s+([a-zA-Z_]\\w*)\\s+(?=where)'
-    'captures':
-      '1':
-        'name': 'entity.name.bundle'
-  }
-
-  {
-    'comment': 'Terminators'
-    'match': ';'
-    'name': 'punctuation.terminator.enc'
-  }
-
-  {
-    'include': '#keywords'
-  }
-  {
-    'include': '#storage_types'
-  }
-  {
-    'include': '#danger-words'
-  }
-  {
-    'include': '#operators'
+    'include': '#code'
   }
 ]
-
 'repository' :
-  'string_escaped_char':
+  'code':
     'patterns': [
       {
-        'match': '\\\\([0-7]{3}|[abfnrtv\\\\\'"]|x[0-9a-fA-F]{2}|u[0-9a-fA-F]{4}|U[0-9a-fA-F]{8})'
-        'name': 'constant.character.escape.enc'
+        'include': '#types'
       }
       {
-        'match': '\\\\[^0-7xuUabfnrtv\\\'"]'
-        'name': 'invalid.illegal.unknown-escape.enc'
+        'include': '#declarations'
       }
-    ]
-  'string_placeholder':
-    'patterns': [
       {
-        'match': '%(\\[\\d+\\])?([\\+#\\-0\\x20]{,2}((\\d+|\\*)?(\\.?(\\d+|\\*|(\\[\\d+\\])\\*?)?(\\[\\d+\\])?)?))?[vT%tbcdoqxXUbeEfFgGsp]'
-        'name': 'constant.other.placeholder.enc'
+        'include': '#inheritance'
       }
-    ]
-  'keywords':
-    'patterns': [
       {
-        'comment': 'Control keywords'
-        'match': '\\b(and|async|await|by|class|chain|def|else|eos|for|foreach|get|getNext|if|in|join|let|liftf|liftv|match|new|not|or|passive|print|repeat|require|stream|suspend|then|this|trait|unless|val|when|while|with|yield|bundle|where)\\b'
-        'name': 'keyword.control.enc'
+        'include': '#imports'
       }
-    ]
-  'danger-words':
-    'patterns': [
       {
-        'match' : '\\b(embed|body|en)\\b'
-        'name' : 'keyword.danger.enc'
+        'include': '#comments'
+      }
+      {
+        'include': '#strings'
+      }
+      {
+        'include': '#initialization'
+      }
+      {
+        'include': '#keywords'
+      }
+      {
+        'include': '#constants'
+      }
+      {
+        'include': '#char-literal'
+      }
+      {
+        'include': '#parameter-list'
+      }
+      {
+        'include': '#qualifiedClassName'
+      }
+      {
+        'include': '#meta-brackets'
+      }
+      {
+        'include': '#meta-colons'
       }
     ]
-  'storage_types':
+  'types':
     'patterns': [
       {
         'comment': 'Storage types'
-        'match': '\\b(class|bool|char|real|int|uint|string|void)\\b'
+        'match': '\\b(bool|char|real|int|uint|String|void)\\b'
         'name': 'storage.type.enc'
       }
     ]
-  'operators':
-    'comment': 'Note that the order here is very important!'
+  'declarations':
+    'patterns': [
+     {
+       'captures':
+         '1':
+           'name': 'keyword.declaration.enc'
+         '2':
+           'name': 'entity.name.function.declaration'
+       'match': '(?x)\\b(def)\\s+(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\\s])(?=[(\\t ])|[_$a-zA-Z][_$a-zA-Z0-9]*|[-?~><^+*%:!#|/@\\\\]+)'
+     }
+     {
+       'captures':
+         '1':
+           'name': 'keyword.require.enc'
+         '2':
+           'name': 'entity.name.val.declaration.require'
+         '3':
+           'name': 'entity.name.function.declaration.require'
+       'match': '\\b(require)\\s+(?:([_$a-zA-Z][_$a-zA-Z0-9]*)(?=\\s*:)|([_$a-zA-Z][_$a-zA-Z0-9]*)(?=\\s*\\())'
+     }
+     {
+       'captures':
+         '1':
+           'name': 'storage.modifier.passive.enc'
+         '2':
+           'name': 'storage.type.enc'
+         '3':
+           'name': 'entity.name.class.declaration'
+       'match': '\\b(passive\\s+)?(class|trait|object)\\s+([^\\s\\{<]+)'
+     }
+     {
+       'captures':
+         '1':
+           'name': 'keyword.bundle.enc'
+         '2':
+           'name': 'entity.name.bundle.enc'
+         '3':
+           'name': 'keyword.where.enc'
+       'match': '\\b(bundle)\\s+([\\w\\.]+)\\s+(where)\\b'
+       'name': 'meta.bundle.enc'
+     }
+    ]
+  'inheritance': # TODO: Check if this is valid.
     'patterns': [
       {
-        'match': '\\-\\-'
-        'name': 'keyword.operator.decrement.enc'
+        'captures':
+          '1':
+            'name': 'storage.type.enc'
+          '2':
+            'name': 'entity.other.inherited-class.enc'
+        'match': 'class .*(?:<.*>)?\\s+(:)\\s+([^\\s\\{\\(\\[\\]]+)'
+      }
+    ]
+  'imports': # TODO: Taken as is, is this correct?
+    'begin': '\\b(import)\\s+'
+    'beginCaptures':
+      '1':
+        'name': 'keyword.import.enc'
+    'end': '([\\n;]+)'
+    'name': 'meta.import.enc'
+    'patterns': [
+      {
+        'include': '#comments'
       }
       {
-        'match': '\\+\\+'
-        'name': 'keyword.operator.increment.enc'
+        'match': '([^\\s{;.]+)\\s*\\.\\s*'
+        'name': 'variable.bundle.enc'
       }
       {
-        'match': '(==|!=|<=|>=|<[^<]|>[^>])'
+        'match': '([^\\s{;.]+)\\s*[._]'
+        'name': 'variable.import.enc'
+      }
+      {
+        'begin': '{'
+        'beginCaptures':
+          '0':
+            'name': 'meta.bracket.enc'
+        'end': '}'
+        'endCaptures':
+          '0':
+            'name': 'meta.bracket.enc'
+        'name': 'meta.import.selector.enc'
+        'patterns': [
+          {
+            'captures':
+              '1':
+                'name': 'variable.import.renamed-from.enc'
+              '2':
+                'name': 'keyword.other.arrow.enc'
+              '3':
+                'name': 'variable.import.renamed-to.enc'
+            'match': '(?x) \\s*\n\t\t\t\t([^\\s.,}]+) \\s*\n\t\t\t\t(=>) \\s*\n\t\t\t\t([^\\s.,}]+) \\s*\n\t\t\t  '
+          }
+          {
+            'match': '([^\\s.,}]+)'
+            'name': 'variable.import.enc'
+          }
+        ]
+      }
+    ]
+  'comments':
+    'patterns': [
+      {
+        'begin': '\\{-'
+        'captures':
+          '0':
+            'name': 'punctuation.definition.comment.enc'
+        'end': '-\\}'
+        'name': 'comment.block.enc'
+        'patterns': [
+          {
+            'captures':
+              '0':
+                'name': 'keyword.other.todo'
+            'match': '(?:TODO|XXX):?'
+          }
+        ]
+      }
+      {
+        'comment': 'Line comments'
+        'begin': '--'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.enc'
+        'end': '$'
+        'name': 'comment.line.double-dash.enc'
+        'patterns': [
+          {
+            'captures':
+              '0':
+                'name': 'keyword.other.todo'
+            'match': '(?:TODO|XXX):?'
+          }
+        ]
+      }
+      {
+        'comment': 'Environment instruction'
+        'match': '^#!.*$'
+        'name': 'comment.line.env.enc'
+      }
+    ]
+  'strings':
+    'patterns': [
+      {
+        'begin': '"'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.string.begin.enc'
+        'end': '"'
+        'endCaptures':
+          '0':
+            'name': 'punctuation.definition.string.end.enc'
+        'name': 'string.quoted.double.enc'
+        'patterns': [
+          {
+            'match': '\\\\(?:[btnfr\\\\"\']|[0-7]{1,3}|u[0-9A-Fa-f]{4})'
+            'name': 'constant.character.escape.enc'
+          }
+          {
+            'match': '\\\\.'
+            'name': 'invalid.illegal.unrecognized-string-escape.enc'
+          }
+        ]
+      }
+    ]
+  'initialization':
+    'captures':
+      '1':
+        'name': 'keyword.new.enc'
+      '2':
+        'name': 'entity.name.class'
+    'match': '\\b(new)\\s+([^\\s\\{\\(\\[<]+)'
+  'keywords':
+    'patterns': [
+      {
+        'match': '\\b(return)\\b'
+        'name': 'keyword.control.flow.jump.enc'
+      }
+      {
+        'match': '\\b(else|if|then|while|repeat|match|with|when)\\b'
+        'name': 'keyword.control.flow.enc'
+      }
+      {
+        'match': '\\b(let|in)\\b'
+        'name': 'keyword.declaration.enc'
+      }
+      {
+        'match': '(==|!=|<=|>=|<>|<|>)'
         'name': 'keyword.operator.comparison.enc'
       }
       {
-        'match': '(&&|\\|\\||!)'
-        'name': 'keyword.operator.logical.enc'
-      }
-      {
-        'match': '(\\+|\\-|\\*|/|%)'
+        'match': '(\\-|\\+|\\*|/(?![/*])|%)'
         'name': 'keyword.operator.arithmetic.enc'
       }
       {
-        'match': '(&(?!\\^)|\\||\\^|&\\^|<<|>>)'
-        'name': 'keyword.operator.arithmetic.bitwise.go'
+        'match': '(not|and|or)'
+        'name': 'keyword.operator.logical.enc'
+      }
+    ]
+  'constants':
+    'patterns': [
+      {
+        'match': '\\b(false|null|true|\\(\\)|Nothing)\\b'
+        'name': 'constant.language.enc'
+      }
+      {
+        'comment': 'Floating-point literals'
+        'match': '(\\.\\d+([Ee][\-\+]\\d+)?i?)\\b|\\b\\d+\\.\\d*(([Ee][\-\+]\\d+)?i?\\b)?'
+        'name': 'constant.numeric.floating-point.enc'
+      }
+      {
+        'comment': 'Integers'
+        'match': '\\b((0x[0-9a-fA-F]+)|(0[0-7]+i?)|(\\d+([Ee]\\d+)?i?)|(\\d+[Ee][\-\+]\\d+i?))\\b'
+        'name': 'constant.numeric.integer.enc'
+      }
+      {
+        'match': '\\b(this|super|self)\\b' # TODO: do all these keywords exist?
+        'name': 'variable.language.enc'
+      }
+      {
+        'match': '\\b(String|Maybe)\\b'
+        'name': 'storage.type.enc'
+      }
+    ]
+  'char-literal':
+    'begin': '\''
+    'beginCaptures':
+      '0':
+        'name': 'punctuation.definition.character.begin.enc'
+    'end': '\''
+    'endCaptures':
+      '0':
+        'name': 'punctuation.definition.character.end.enc'
+    'name': 'constant.character.literal.enc'
+    'patterns': [
+      {
+        'match': '\\\\(?:[btnfr\\\\"\']|[0-7]{1,3}|u[0-9A-Fa-f]{4})'
+        'name': 'constant.character.escape.enc'
+      }
+      {
+        'match': '\\\\.'
+        'name': 'invalid.illegal.unrecognized-character-escape.enc'
+      }
+      {
+        'match': '[^\']{2,}'
+        'name': 'invalid.illegal.character-literal-too-long'
+      }
+      {
+        'match': '(?<!\')[^\']'
+        'name': 'invalid.illegal.character-literal-too-long'
+      }
+    ]
+  'parameter-list':
+    'patterns': [
+      {
+        'captures':
+          '1':
+            'name': 'variable.parameter.enc'
+          '2':
+            'name': 'meta.colon.enc'
+        'comment': 'We do not match param names that start with a Capital'
+        'match': '(?<=[^\\._$a-zA-Z0-9])(`[^`]+`|[_$a-z][_$a-zA-Z0-9]*(?:_[^\\s])(?=[\\t ])|[_$a-z][_$a-zA-Z0-9]*|[-?~><^+*%:!#|/@\\\\]+)\\s*(:)\\s+'
+      }
+    ]
+  'qualifiedClassName':
+    'captures':
+      '1':
+        'name': 'entity.name.class'
+    'match': '(\\b([A-Z][\\w]*))'
+  'meta-brackets':
+    'comment': 'For themes: Brackets look nice when colored.'
+    'patterns': [
+      {
+        'match': '{|}|\\(|\\)'
+        'name': 'meta.bracket.enc'
+      }
+    ]
+  'meta-colons':
+    'comment': 'For themes: Matching type colons'
+    'patterns': [
+      {
+        'match': '(?<!:):(?!:)'
+        'name': 'meta.colon.enc'
       }
     ]
