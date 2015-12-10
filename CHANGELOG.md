@@ -1,3 +1,6 @@
+## 0.2.1 - The colon that never should have been
+- Fixes the class snippet.
+
 ## 0.2.0 - The Bearmarshal Rewrite
 - A major rewrite of the whole grammar according to a similar package made by Bearmarshal.
 - New snippets

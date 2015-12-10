@@ -4,7 +4,7 @@
     'body': 'bundle $1 where'
   'class':
     'prefix': 'cl'
-    'body': 'class: ${1:Main}\n\t$0'
+    'body': 'class ${1:Main}\n\t$0'
   'if':
     'prefix': 'if'
     'body': 'if ${1:x==0}\nthen\n\t$2\nelse\n\t$0'
