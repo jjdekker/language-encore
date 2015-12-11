@@ -266,15 +266,27 @@
         'name': 'keyword.control.flow.jump.enc'
       }
       {
-        'match': '\\b(else|if|then|while|repeat|match|with|when)\\b'
+        'match': '\\b(else|if|then|while|repeat|match|with|when|foreach|in)\\b'
         'name': 'keyword.control.flow.enc'
       }
       {
         'match': '\\b(get|await)\\b'
-        'name': 'keyword.future.enc'
+        'name': 'keyword.futures.enc'
       }
       {
-        'match': '(~~>)'
+        'match': '(~~>|!)'
+        'name': 'keyword.operator.futures.enc'
+      }
+      {
+        'match': '\\b(async|finish|suspend)\\b'
+        'name': 'keyword.task.enc'
+      }
+      {
+        'match': '\\b(liftv|liftf|join|extract)\\b'
+        'name': 'keyword.combinators.enc'
+      }
+      {
+        'match': '(\\|\\||>>)'
         'name': 'keyword.operator.future.enc'
       }
       {
@@ -286,7 +298,7 @@
         'name': 'keyword.operator.comparison.enc'
       }
       {
-        'match': '(\\-|\\+|\\*|/(?![/*])|%)'
+        'match': '(\\-|\\+|\\*|%)'
         'name': 'keyword.operator.arithmetic.enc'
       }
       {
