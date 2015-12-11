@@ -1,5 +1,6 @@
 ## 0.2.2 -
 - Adds main snippet
+- Fixes indentation guides for many situations. (They are now more specific)
 
 ## 0.2.1 - The colon that never should have been
 - Fixes the class snippet.
