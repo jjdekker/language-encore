@@ -258,7 +258,7 @@
         'name': 'keyword.new.enc'
       '2':
         'name': 'entity.name.class'
-    'match': '\\b(new)\\s+([^\\s\\{\\(\\[<]+)'
+    'match': '\\b(new)\\s+([A-Z]\\w*)'
   'keywords':
     'patterns': [
       {
