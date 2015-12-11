@@ -112,7 +112,12 @@
         'endCaptures':
           '0':
             'name': 'keyword.end.enc'
-        'name': 'comment.embedded.code.enc'
+        'name': 'code.embedded-c.enc'
+        'patterns': [
+          {
+            'include': 'source.c'
+          }
+        ]
       }
     ]
   'types':

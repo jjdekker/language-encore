@@ -1,3 +1,6 @@
+## 0.3.0 - Embedded highlighting
+- Now embedded code is also highlighted.
+
 ## 0.2.2 - Embedded Code support
 - Adds main snippet
 - Fixes indentation guides for many situations. (They are now more specific)
