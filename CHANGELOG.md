@@ -1,5 +1,6 @@
 ## 0.3.0 - Embedded highlighting
-- Now embedded code is also highlighted.
+- Now embedded code is also highlighted
+- Adds keywords and operators for futures
 
 ## 0.2.2 - Embedded Code support
 - Adds main snippet

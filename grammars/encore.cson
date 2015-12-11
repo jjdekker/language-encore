@@ -270,6 +270,14 @@
         'name': 'keyword.control.flow.enc'
       }
       {
+        'match': '\\b(get|await)\\b'
+        'name': 'keyword.future.enc'
+      }
+      {
+        'match': '(~~>)'
+        'name': 'keyword.operator.future.enc'
+      }
+      {
         'match': '\\b(let|in)\\b'
         'name': 'keyword.declaration.enc'
       }
