@@ -3,6 +3,7 @@
 - Adds highlighting of keywords and operators for futures & tasks
 - Adds highlighting of keywords and operators for Parallel Combinators
 - Adds the `unless` keyword
+- Adds coloring for language included support functions (for now that's just `print`)
 
 ## 0.2.2 - Embedded Code support
 - Adds main snippet

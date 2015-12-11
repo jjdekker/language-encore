@@ -330,6 +330,10 @@
         'match': '\\b(String|Maybe)\\b'
         'name': 'storage.type.enc'
       }
+      {
+        'match': '\\b(print)\\b'
+        'name': 'support.function.enc'
+      }
     ]
   'char-literal':
     'begin': '\''
