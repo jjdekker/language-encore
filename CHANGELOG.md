@@ -1,3 +1,7 @@
+## 0.3.1 - Minor Fixes/Improvements
+- Fixes the coloring of special characters in the classname
+- Makes `init` the default method name in the snippet
+
 ## 0.3.0 - Embedded highlighting
 - Now embedded code is also highlighted
 - Adds highlighting of keywords and operators for futures & tasks
