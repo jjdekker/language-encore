@@ -2,6 +2,7 @@
 - Now embedded code is also highlighted
 - Adds highlighting of keywords and operators for futures & tasks
 - Adds highlighting of keywords and operators for Parallel Combinators
+- Adds the `unless` keyword
 
 ## 0.2.2 - Embedded Code support
 - Adds main snippet

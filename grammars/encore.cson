@@ -266,7 +266,7 @@
         'name': 'keyword.control.flow.jump.enc'
       }
       {
-        'match': '\\b(else|if|then|while|repeat|match|with|when|foreach|in)\\b'
+        'match': '\\b(else|if|unless|then|while|repeat|match|with|when|foreach|in)\\b'
         'name': 'keyword.control.flow.enc'
       }
       {
