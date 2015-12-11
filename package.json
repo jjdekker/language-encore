@@ -1,6 +1,6 @@
 {
   "name": "language-encore",
-  "version": "0.2.2",
+  "version": "0.3.0",
   "description": "Adds syntax highlighting for the encore programming language",
   "repository": "https://github.com/jjdekker/language-encore",
   "license": "MIT",
