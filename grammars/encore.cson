@@ -15,6 +15,12 @@
   'code':
     'patterns': [
       {
+        'include': '#comments'
+      }
+      {
+        'include': '#embed'
+      }
+      {
         'include': '#types'
       }
       {
@@ -25,9 +31,6 @@
       }
       {
         'include': '#imports'
-      }
-      {
-        'include': '#comments'
       }
       {
         'include': '#strings'
@@ -55,6 +58,61 @@
       }
       {
         'include': '#meta-colons'
+      }
+    ]
+  'comments':
+    'patterns': [
+      {
+        'begin': '\\{-'
+        'captures':
+          '0':
+            'name': 'punctuation.definition.comment.enc'
+        'end': '-\\}'
+        'name': 'comment.block.enc'
+        'patterns': [
+          {
+            'captures':
+              '0':
+                'name': 'keyword.other.todo'
+            'match': '(?:TODO|XXX):?'
+          }
+        ]
+      }
+      {
+        'comment': 'Line comments'
+        'begin': '--'
+        'beginCaptures':
+          '0':
+            'name': 'punctuation.definition.comment.enc'
+        'end': '$'
+        'name': 'comment.line.double-dash.enc'
+        'patterns': [
+          {
+            'captures':
+              '0':
+                'name': 'keyword.other.todo'
+            'match': '(?:TODO|XXX):?'
+          }
+        ]
+      }
+      {
+        'comment': 'Environment instruction'
+        'match': '^#!.*$'
+        'name': 'comment.line.env.enc'
+      }
+    ]
+  'embed':
+    'patterns': [
+      {
+        'begin': '\\b(embed)\\b'
+        'beginCaptures':
+          '0':
+            'name': 'keyword.embed.enc'
+        'end': '\\b(end)\\b'
+        'endCaptures':
+          '0':
+            'name': 'keyword.end.enc'
+        'name': 'comment.embedded.code.enc'
       }
     ]
   'types':
@@ -163,47 +221,6 @@
             'name': 'variable.import.enc'
           }
         ]
-      }
-    ]
-  'comments':
-    'patterns': [
-      {
-        'begin': '\\{-'
-        'captures':
-          '0':
-            'name': 'punctuation.definition.comment.enc'
-        'end': '-\\}'
-        'name': 'comment.block.enc'
-        'patterns': [
-          {
-            'captures':
-              '0':
-                'name': 'keyword.other.todo'
-            'match': '(?:TODO|XXX):?'
-          }
-        ]
-      }
-      {
-        'comment': 'Line comments'
-        'begin': '--'
-        'beginCaptures':
-          '0':
-            'name': 'punctuation.definition.comment.enc'
-        'end': '$'
-        'name': 'comment.line.double-dash.enc'
-        'patterns': [
-          {
-            'captures':
-              '0':
-                'name': 'keyword.other.todo'
-            'match': '(?:TODO|XXX):?'
-          }
-        ]
-      }
-      {
-        'comment': 'Environment instruction'
-        'match': '^#!.*$'
-        'name': 'comment.line.env.enc'
       }
     ]
   'strings':
