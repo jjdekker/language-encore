@@ -1,3 +1,6 @@
+## 0.2.2 -
+- Adds main snippet
+
 ## 0.2.1 - The colon that never should have been
 - Fixes the class snippet.
 
