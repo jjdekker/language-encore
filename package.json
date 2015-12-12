@@ -7,7 +7,6 @@
   "engines": {
     "atom": ">=1.0.0 <2.0.0"
   },
-  "dependencies": {
-    "language-c": ">=0.45.0"
-  }
+  "dependencies": {},
+  "language-c": "grammar-used"
 }

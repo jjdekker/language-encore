@@ -1,3 +1,6 @@
+## 0.3.2 - Solves updating troubles
+- Fixes a updating bug
+
 ## 0.3.1 - Minor Fixes/Improvements
 - Fixes the coloring of special characters in the classname
 - Makes `init` the default method name in the snippet
