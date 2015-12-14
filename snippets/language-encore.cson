@@ -25,7 +25,7 @@
     'body': 'def ${1:init}($2) : ${3:void}\n\t$0'
   'passive class':
     'prefix': 'passive'
-    'body': 'passive class: ${1:Main}\n\t$0'
+    'body': 'passive class ${1:Main}\n\t$0'
   'print':
     'prefix': 'print'
     'body': 'print("$1"${2:, $3})$0'

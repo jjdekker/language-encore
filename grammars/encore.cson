@@ -4,8 +4,8 @@
 ]
 'name': 'Encore'
 'firstLineMatch': '^#!/.*\\b\\w*encore\\b'
-'foldingStartMarker': '/\\*\\*|\\{\\s*$'
-'foldingStopMarker': '\\*\\*/|^\\s*\\}'
+'foldingStartMarker': '\\{\\s*$'
+'foldingStopMarker': '^\\s*\\}'
 'patterns' : [
   {
     'include': '#code'
@@ -104,6 +104,24 @@
   'embed':
     'patterns': [
       {
+        'begin': '\\b(embed)\\s+([_$a-zA-Z][_$a-zA-Z0-9]*)\\b'
+        'beginCaptures':
+          '0':
+            'name': 'keyword.embed.enc'
+          '1':
+            'name': 'storage.type.enc' # TODO: It would be better if it used the type patterns...
+        'end': '\\b(end)\\b'
+        'endCaptures':
+          '0':
+            'name': 'keyword.end.enc'
+        'name': 'code.embedded-c.enc'
+        'patterns': [
+          {
+            'include': 'source.c'
+          }
+        ]
+      }
+      {
         'begin': '\\b(embed)\\b'
         'beginCaptures':
           '0':
@@ -116,6 +134,10 @@
         'patterns': [
           {
             'include': 'source.c'
+          }
+          {
+            'match': '\\b(body)\\b'
+            'name': 'keyword.body.enc'
           }
         ]
       }
@@ -136,7 +158,7 @@
            'name': 'keyword.declaration.enc'
          '2':
            'name': 'entity.name.function.declaration'
-       'match': '(?x)\\b(def)\\s+(`[^`]+`|[_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\\s])(?=[(\\t ])|[_$a-zA-Z][_$a-zA-Z0-9]*|[-?~><^+*%:!#|/@\\\\]+)'
+       'match': '(?x)\\b(def)\\s+([_$a-zA-Z][_$a-zA-Z0-9]*(?:_[^\\s])(?=[(\\t ])|[_$a-zA-Z][_$a-zA-Z0-9]*)'
      }
      {
        'captures':
@@ -156,14 +178,15 @@
            'name': 'storage.type.enc'
          '3':
            'name': 'entity.name.class.declaration'
-       'match': '\\b(passive\\s+)?(class|trait|object)\\s+([^\\s\\{<]+)'
+       'match': '\\b(passive\\s+)?(class|trait)\\s+([^\\s\\{<]+)'
      }
      {
        'captures':
          '1':
            'name': 'keyword.bundle.enc'
          '2':
-           'name': 'entity.name.bundle.enc'
+           #'name': 'entity.name.bundle.enc'
+           'name': 'variable.bundle.enc' # XXX: For consistent colours.
          '3':
            'name': 'keyword.where.enc'
        'match': '\\b(bundle)\\s+([\\w\\.]+)\\s+(where)\\b'
@@ -181,7 +204,7 @@
         'match': 'class .*(?:<.*>)?\\s+(:)\\s+([^\\s\\{\\(\\[\\]]+)'
       }
     ]
-  'imports': # TODO: Taken as is, is this correct?
+  'imports':
     'begin': '\\b(import)\\s+'
     'beginCaptures':
       '1':
@@ -197,35 +220,8 @@
         'name': 'variable.bundle.enc'
       }
       {
-        'match': '([^\\s{;.]+)\\s*[._]'
-        'name': 'variable.import.enc'
-      }
-      {
-        'begin': '{'
-        'beginCaptures':
-          '0':
-            'name': 'meta.bracket.enc'
-        'end': '}'
-        'endCaptures':
-          '0':
-            'name': 'meta.bracket.enc'
-        'name': 'meta.import.selector.enc'
-        'patterns': [
-          {
-            'captures':
-              '1':
-                'name': 'variable.import.renamed-from.enc'
-              '2':
-                'name': 'keyword.other.arrow.enc'
-              '3':
-                'name': 'variable.import.renamed-to.enc'
-            'match': '(?x) \\s*\n\t\t\t\t([^\\s.,}]+) \\s*\n\t\t\t\t(=>) \\s*\n\t\t\t\t([^\\s.,}]+) \\s*\n\t\t\t  '
-          }
-          {
-            'match': '([^\\s.,}]+)'
-            'name': 'variable.import.enc'
-          }
-        ]
+        'match': '([^\\s{;.]+)'
+        'name': 'variable.bundle.enc'
       }
     ]
   'strings':
@@ -294,7 +290,7 @@
         'name': 'keyword.declaration.enc'
       }
       {
-        'match': '(==|!=|<=|>=|<>|<|>)'
+        'match': '(==|!=|<=|>=|<|>)'
         'name': 'keyword.operator.comparison.enc'
       }
       {
@@ -323,7 +319,7 @@
         'name': 'constant.numeric.integer.enc'
       }
       {
-        'match': '\\b(this|super|self)\\b' # TODO: do all these keywords exist?
+        'match': '\\b(this)\\b'
         'name': 'variable.language.enc'
       }
       {
@@ -372,7 +368,7 @@
           '2':
             'name': 'meta.colon.enc'
         'comment': 'We do not match param names that start with a Capital'
-        'match': '(?<=[^\\._$a-zA-Z0-9])(`[^`]+`|[_$a-z][_$a-zA-Z0-9]*(?:_[^\\s])(?=[\\t ])|[_$a-z][_$a-zA-Z0-9]*|[-?~><^+*%:!#|/@\\\\]+)\\s*(:)\\s+'
+        'match': '(?<=[^\\._$a-zA-Z0-9])(`[^`]+`|[_$a-z][_$a-zA-Z0-9]*(?:_[^\\s])(?=[\\t ])|[_$a-z][_$a-zA-Z0-9]*)\\s*(:)\\s+'
       }
     ]
   'qualifiedClassName':
