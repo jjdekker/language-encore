@@ -149,17 +149,6 @@
         'match': '\\b(bool|char|real|int|uint|String|void)\\b'
         'name': 'storage.type.enc'
       }
-      {
-        'captures': # TODO: Would be nice to handle this by importing C type grammar instead. Also, it seems other embedding takes preceedence.
-          '1':
-            'name': 'keyword.embed.enc'
-          '2':
-            'name': 'storage.type.embedded-c.enc'
-          '3':
-            'name': 'keyword.end.enc'
-        'comment': 'Embedded C types'
-        'match': '\\b(embed)\\s+(\\w.*)\\s+(end)\\b'
-      }
     ]
   'declarations':
     'patterns': [
