@@ -185,7 +185,6 @@
          '1':
            'name': 'keyword.bundle.enc'
          '2':
-           #'name': 'entity.name.bundle.enc'
            'name': 'variable.bundle.enc' # XXX: For consistent colours.
          '3':
            'name': 'keyword.where.enc'

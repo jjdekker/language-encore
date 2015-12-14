@@ -1,3 +1,8 @@
+## 0.3.3 - Minor Update
+- Fixes passive snippet
+- More specific matching for embedded statements
+- Cleaning in the grammar
+
 ## 0.3.2 - Solves updating troubles
 - Fixes a updating bug
 
