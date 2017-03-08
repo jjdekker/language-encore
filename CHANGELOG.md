@@ -1,3 +1,6 @@
+## 0.3.4 - Move to Parapluu
+- Move repository to parapluu
+
 ## 0.3.3 - Minor Update
 - Fixes passive snippet
 - More specific matching for embedded statements
